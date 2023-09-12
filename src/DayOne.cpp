@@ -45,9 +45,7 @@ std::optional<std::tuple<int, int, int>> find_sum_triplet(int target, std::vecto
     int number_of_expenses = expenses.size();
 
     for (int i = 0; i < number_of_expenses - 2; i++) {
-        if (i > 0 && expenses[i] == expenses[i - 1]) {
-            continue;
-        }
+        if (i > 0 && expenses[i] == expenses[i - 1]) continue;
 
         int left  = i + 1;
         int right = number_of_expenses - 1;
@@ -55,13 +53,9 @@ std::optional<std::tuple<int, int, int>> find_sum_triplet(int target, std::vecto
         while (left < right) {
             int sum = expenses[i] + expenses[left] + expenses[right];
 
-            if (sum == target) {
-                return std::tuple(expenses[i], expenses[left], expenses[right]);
-            } else if (sum < target) {
-                left++;
-            } else {
-                right--;
-            }
+            if (sum == target) return std::tuple(expenses[i], expenses[left], expenses[right]);
+            else if (sum < target) left++;
+            else right--;
         }
     }
 
@@ -76,6 +70,7 @@ int main() {
     if (maybe_sum_pair.has_value()) {
         auto [first, second] = maybe_sum_pair.value();
         std::cout << "Found pair with a sum equal to " << target << ": [" << first << ", " << second << "]" << std::endl;
+
         auto product = first * second;
         std::cout << "Product of the pair is " << product << std::endl;
     } else {
@@ -87,6 +82,7 @@ int main() {
     if (maybe_sum_triplet.has_value()) {
         auto [first, second, third] = maybe_sum_triplet.value();
         std::cout << "Found triplet with a sum equal to " << target << ": [" << first << ", " << second <<  ", " << third << "]" << std::endl;
+
         auto product = first * second * third;
         std::cout << "Product of the triplet is " << product << std::endl;
     } else {
@@ -95,7 +91,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
