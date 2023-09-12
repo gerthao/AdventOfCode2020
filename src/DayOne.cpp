@@ -63,12 +63,13 @@ std::optional<std::tuple<int, int, int>> find_sum_triplet(int target, std::vecto
 }
 
 int main() {
-    int target          = 2020;
-    auto expenses       = read_expense_report("resources/ExpenseReport.txt");
-    auto maybe_sum_pair = find_sum_pair(target, expenses);
+    int target             = 2020;
+    auto expenses          = read_expense_report("resources/ExpenseReport.txt");
+    auto maybe_sum_pair    = find_sum_pair(target, expenses);
+    auto maybe_sum_triplet = find_sum_triplet(target, expenses);
 
     if (maybe_sum_pair.has_value()) {
-        auto [first, second] = maybe_sum_pair.value();
+        auto [first, second] = *maybe_sum_pair;
         std::cout << "Found pair with a sum equal to " << target << ": [" << first << ", " << second << "]" << std::endl;
 
         auto product = first * second;
@@ -77,10 +78,9 @@ int main() {
         std::cout << "Could not find a pair with a sum equal to " << target << std::endl;
     }
 
-    auto maybe_sum_triplet = find_sum_triplet(target, expenses);
 
     if (maybe_sum_triplet.has_value()) {
-        auto [first, second, third] = maybe_sum_triplet.value();
+        auto [first, second, third] = *maybe_sum_triplet;
         std::cout << "Found triplet with a sum equal to " << target << ": [" << first << ", " << second <<  ", " << third << "]" << std::endl;
 
         auto product = first * second * third;
