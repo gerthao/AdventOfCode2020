@@ -9,7 +9,7 @@
 std::vector<int> read_expense_report(std::string file_path) {
     std::ifstream file(file_path);
     std::string line;
-    auto expenses = std::vector<int>();
+    std::vector<int> expenses;
 
     if (!file.is_open()) {
         std::cerr << "Failed to open file...";
@@ -26,10 +26,10 @@ std::vector<int> read_expense_report(std::string file_path) {
 }
 
 std::optional<std::tuple<int, int>> find_sum_pair(int target, std::vector<int> expenses) {
-    auto pairs = std::unordered_map<int, int>();
+    std::unordered_map<int, int> pairs;
 
     for (const auto& expense: expenses) {
-        auto difference = target - expense;
+        int difference = target - expense;
         if (pairs.find(difference) != pairs.end()) {
             return std::tuple(expense, difference);
         }
