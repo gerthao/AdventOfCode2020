@@ -29,7 +29,6 @@ std::vector<std::string> FileUtil::get_lines(const std::string& file_path) {
     std::string line;
     std::vector<std::string> data;
 
-
     if (!file.is_open()) {
         return data;
     }
@@ -48,7 +47,6 @@ std::vector<T> collect(const std::string& file_path, const std::function<T(std::
     std::ifstream file(file_path);
     std::string line;
     std::vector<T> data;
-
 
     if (!file.is_open()) {
         return data;
