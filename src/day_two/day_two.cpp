@@ -40,15 +40,15 @@ std::vector<PasswordEntry> read_input(std::string file_path) {
             std::string letter_range = policy.substr(0, delimiter);
             std::string letter       = policy.substr(delimiter + 1);
 
-            delimiter          = letter_range.find('-');
+            delimiter       = letter_range.find('-');
             int lower_limit = std::stoi(letter_range.substr(0, delimiter));
             int upper_limit = std::stoi(letter_range.substr(delimiter + 1));
 
             entries.push_back({
-                .lower_limit = lower_limit,
-                .upper_limit = upper_limit,
+                .lower_limit      = lower_limit,
+                .upper_limit      = upper_limit,
                 .target_character = letter[0],
-                .password = password
+                .password         = password
             });
         }
     }
