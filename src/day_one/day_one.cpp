@@ -64,7 +64,7 @@ std::optional<std::tuple<int, int, int>> find_sum_triplet(int target, std::vecto
 
 int main() {
     int target             = 2020;
-    auto expenses          = read_expense_report("resources/ExpenseReport.txt");
+    auto expenses          = read_expense_report("../resources/expense_report.txt");
     auto maybe_sum_pair    = find_sum_pair(target, expenses);
     auto maybe_sum_triplet = find_sum_triplet(target, expenses);
 
